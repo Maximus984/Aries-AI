@@ -1,9 +1,11 @@
 import dotenv from "dotenv";
+import express from "express";
 import { createApp } from "./app.js";
 import { loadConfig } from "./config.js";
 import { HybridDualModelAdapter } from "./llm/githubModelsAdapter.js";
 import { AppStore } from "./security/store.js";
-import { dirname, resolve } from "node:path";
+import { existsSync } from "node:fs";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -38,6 +40,7 @@ const app = createApp({
   adapter,
   clientOrigins: config.clientOrigins,
   allowLanOrigins: config.allowLanOrigins,
+  redirectRootToClientOrigin: !config.serveClientApp,
   store,
   geminiImage: {
     apiKeys: config.geminiApiKeys,
@@ -61,9 +64,23 @@ const app = createApp({
   }
 });
 
+const clientDistDir = resolve(__dirname, "../../client/dist");
+const clientIndexHtml = join(clientDistDir, "index.html");
+const canServeClientBuild = config.serveClientApp && existsSync(clientIndexHtml);
+
+if (canServeClientBuild) {
+  app.use(express.static(clientDistDir, { index: false }));
+  app.get(/^(?!\/api).*/, (_req, res) => {
+    res.sendFile(clientIndexHtml);
+  });
+}
+
 app.listen(config.PORT, () => {
   console.log(`Aries server listening on http://localhost:${config.PORT}`);
   console.log(`Founder account ready: ${founder.email}`);
   console.log(`Admin account ready: ${admin.email}`);
   console.log(`Monitor account ready: ${monitor.email}`);
+  if (canServeClientBuild) {
+    console.log(`Serving Aries website from ${clientDistDir}`);
+  }
 });

@@ -27,6 +27,7 @@ type CreateAppOptions = {
   adapter: DualModelAdapter;
   clientOrigins: string[];
   allowLanOrigins: boolean;
+  redirectRootToClientOrigin?: boolean;
   store: AppStore;
   geminiImage: {
     apiKeys: string[];
@@ -809,10 +810,20 @@ export const isAllowedCorsOrigin = (
   return isLanHostname(parsed.hostname);
 };
 
-export const createApp = ({ adapter, clientOrigins, allowLanOrigins, store, geminiImage, founderTerminal, elevenlabs }: CreateAppOptions) => {
+export const createApp = ({
+  adapter,
+  clientOrigins,
+  allowLanOrigins,
+  redirectRootToClientOrigin,
+  store,
+  geminiImage,
+  founderTerminal,
+  elevenlabs
+}: CreateAppOptions) => {
   const app = express();
   const rateLimitBuckets = new Map<string, RateLimitBucket>();
   const defaultClientOrigin = clientOrigins[0] ?? "http://localhost:5173";
+  const shouldRedirectRootToClientOrigin = redirectRootToClientOrigin ?? true;
   const liveVoiceCatalog = toPublicLiveVoiceOptions(elevenlabs.voiceOptions, elevenlabs.voiceId);
   const allowedLiveVoiceIds = new Set(liveVoiceCatalog.map((voice) => voice.voiceId ?? ""));
   const allowedOrigins = new Set(
@@ -839,9 +850,11 @@ export const createApp = ({ adapter, clientOrigins, allowLanOrigins, store, gemi
   app.disable("x-powered-by");
   app.set("trust proxy", true);
 
-  app.get("/", (_req, res) => {
-    res.redirect(302, defaultClientOrigin);
-  });
+  if (shouldRedirectRootToClientOrigin) {
+    app.get("/", (_req, res) => {
+      res.redirect(302, defaultClientOrigin);
+    });
+  }
 
   app.use((req, res, next) => {
     res.setHeader("X-Content-Type-Options", "nosniff");

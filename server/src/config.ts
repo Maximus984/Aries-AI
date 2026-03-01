@@ -2,6 +2,7 @@ import { z } from "zod";
 
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
+  SERVE_CLIENT_APP: z.string().trim().optional().default(""),
   PORT: z.coerce.number().int().min(1).max(65535).default(3000),
   CLIENT_ORIGIN: z.string().url().default("http://localhost:5173"),
   CLIENT_ORIGINS: z.string().trim().optional().default(""),
@@ -54,6 +55,7 @@ export type AppConfig = RawAppConfig & {
   clientOrigins: string[];
   allowLanOrigins: boolean;
   elevenlabsVoiceOptions: Array<{ voiceId: string; label: string; description?: string }>;
+  serveClientApp: boolean;
 };
 
 const isPlaceholderSecret = (value: string): boolean => {
@@ -181,6 +183,8 @@ export const loadConfig = (): AppConfig => {
   }
 
   const fallbackAllowLan = config.NODE_ENV !== "production";
+  const fallbackServeClientApp = config.NODE_ENV === "production";
+  const serveClientApp = parseBoolish(config.SERVE_CLIENT_APP, fallbackServeClientApp);
   const allowLanOrigins = parseBoolish(config.ALLOW_LAN_ORIGINS, fallbackAllowLan);
   const clientOrigins = parseClientOrigins(config.CLIENT_ORIGIN, config.CLIENT_ORIGINS);
   const elevenlabsVoiceOptions = parseElevenlabsVoiceOptions(config.ELEVENLABS_VOICE_ID, config.ELEVENLABS_VOICE_OPTIONS);
@@ -188,6 +192,7 @@ export const loadConfig = (): AppConfig => {
   return {
     ...config,
     geminiApiKeys,
+    serveClientApp,
     clientOrigins,
     allowLanOrigins,
     elevenlabsVoiceOptions

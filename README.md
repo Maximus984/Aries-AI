@@ -135,6 +135,7 @@ LANE_FLASH_LABEL="Aries Speed"
 ## Run Commands
 
 - Start full stack: `npm run dev`
+- Start as one production-style website (API + UI on same domain): `npm run serve:website`
 - Start server only: `npm run dev:server`
 - Start client only: `npm run dev:client`
 - Run tests: `npm run test`
@@ -143,6 +144,19 @@ LANE_FLASH_LABEL="Aries Speed"
 Workspace scripts:
 - Client tests: `npm run test --workspace client`
 - Server tests: `npm run test --workspace server`
+
+## One-Domain Website Mode
+
+If you want Aries to behave like a single website (not separate `:5173` + `:3000` in production):
+
+1. Ensure `SERVE_CLIENT_APP=true` in [server/.env.example](/Users/maximus/Desktop/Aries%20AI/server/.env.example) / `server/.env`.
+2. Build and serve with one command:
+
+```bash
+npm run serve:website
+```
+
+This builds `client/dist`, starts the server, and serves the frontend + API from the same host/port.
 
 ## Default Seeded Accounts
 
