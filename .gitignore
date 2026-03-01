@@ -26,3 +26,6 @@ pnpm-debug.log*
 # Local runtime data (do not commit)
 server/data/app-data.json
 server/server/data/app-data.json
+
+# Local Bark clone (not tracked in this repo)
+bark/
