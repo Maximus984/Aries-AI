@@ -1,0 +1,59 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(560)">
+      <stop stop-color="#f2f3ff" stop-opacity="0.32" />
+      <stop offset="0.48" stop-color="#676d94" stop-opacity="0.18" />
+      <stop offset="1" stop-color="#050811" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="stroke" x1="166" y1="844" x2="878" y2="178" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f1942" />
+      <stop offset="0.28" stop-color="#8f79ff" />
+      <stop offset="0.53" stop-color="#56ceff" />
+      <stop offset="0.79" stop-color="#9180ff" />
+      <stop offset="1" stop-color="#101939" />
+    </linearGradient>
+    <linearGradient id="ink" x1="178" y1="836" x2="864" y2="192" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0b1230" />
+      <stop offset="0.33" stop-color="#4c50a7" />
+      <stop offset="0.58" stop-color="#132f83" />
+      <stop offset="0.86" stop-color="#28386f" />
+      <stop offset="1" stop-color="#0a1330" />
+    </linearGradient>
+    <linearGradient id="shine" x1="464" y1="262" x2="658" y2="768" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.92" />
+      <stop offset="1" stop-color="#cfd8ff" stop-opacity="0.12" />
+    </linearGradient>
+    <filter id="glow" x="74" y="46" width="876" height="930" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="#81b9ff" flood-opacity="0.55" />
+      <feDropShadow dx="0" dy="0" stdDeviation="44" flood-color="#8b74ff" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#bg)" />
+
+  <g filter="url(#glow)">
+    <path
+      d="M824.5 247.5C819 202.9 784.7 177.3 739.9 181.7C651.4 190.3 589.3 290.6 546.9 358.2L524.9 393.8L517.8 381.8C493.7 341.2 461.5 284.1 426.6 240.2C384.4 187.3 338.4 155.1 290.7 162.4C250.7 168.4 224.8 197.8 220 238.4C214.2 287 238.5 332.8 280.3 369.6C316.2 401.2 360.7 424.1 398.5 440.8C298.6 522.6 218.1 628.7 198.2 717.1C191.9 745.2 190.8 774.8 200.7 802.6C212.3 835.1 236.7 861.5 271.6 871.2C338.1 889.6 408.4 851.7 465.5 805.8C517.6 763.8 566.7 707.4 607.5 655.4C650.3 703 702.7 752.6 756.9 785.7C812.2 819.5 876.7 840.8 934.3 805.1C962.2 787.9 978.2 761.8 983.7 731.4C989.1 701.4 984.3 669 973.1 639.1C932.8 531.6 794.6 468.3 686.3 441.1C746.4 405 811.8 350.8 824.5 247.5ZM783.9 247.8C776.4 308.4 727.9 348.9 677.2 376.5C641 396.2 603.3 411.2 576.4 420.2L563.2 424.6L574.3 435.7L592.2 453.6L600.8 462.2L612.6 464.3C715.6 482.7 863 543.1 918.4 648.2C933.8 677.4 940.7 711.3 928.8 740.8C916.6 770.9 888.6 791 853.1 792.6C808.9 794.7 765.1 774 728.8 746.4C680.7 709.9 636.9 661.8 597.7 613.9L595.2 610.8L589.8 603.9L577.5 588.1L565.3 603.9L559.9 610.8L556.2 615.5C512.9 670.8 461.8 730.8 407.6 774.8C362 811.8 302.4 843.4 250.1 816.8C226.5 804.8 211.4 783.9 207.8 758.8C203.9 731.5 212.3 703 225.9 679.5C268.5 605.8 370.5 525.2 459.7 472.1L469.8 466.1L482.1 458.9L496.6 450.4L509.1 442.9L496.1 436.4L480.8 428.8L468.3 422.5L461.3 418.9C423.8 399.6 382.4 374.8 348.6 343.7C314.7 312.4 289.4 273.6 296.5 227.6C301.4 195.6 325.5 175.1 357.8 174.9C395.8 174.6 430.8 198.7 459.9 224.8C497.2 258.2 530.4 301.6 558.2 343L574.5 367.4L577.4 371.7L590.7 391.5L603.1 370.9L607.1 364.3C629.9 326.7 654.4 289.3 682.4 254.5C710.8 219.2 745.2 181.3 783.7 180.2C807.3 179.5 825.2 194.8 828.6 217.8C830 227.3 829.4 237.1 827.8 246.6L827.7 246.9L826.8 252.4L826.1 256.9L825.7 259.3L825.2 262.5L823.9 271.2L822.4 280.4L820.6 290.8L818.8 300.5L816.6 311.6L814.1 323.2L811.4 335.4L808.6 347.8L805.6 360.6L802.4 373.6L799 386.9L795.4 400.3L791.6 413.8L787.8 427.3L783.9 440.7"
+      fill="url(#ink)"
+      stroke="url(#stroke)"
+      stroke-width="16"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M592.2 243.7C550.3 289.2 513.9 354.5 488.4 415.8C463.8 475.2 443.6 557.1 431.8 642.5C420 728.2 429.7 778.8 448.1 828.4"
+      stroke="url(#shine)"
+      stroke-width="12"
+      stroke-linecap="round"
+      opacity="0.62"
+    />
+  </g>
+
+  <g fill="white" fill-opacity="0.9">
+    <circle cx="688" cy="218" r="3" />
+    <circle cx="742" cy="248" r="2.4" />
+    <circle cx="792" cy="298" r="2" />
+    <circle cx="286" cy="585" r="2.6" />
+    <circle cx="232" cy="614" r="2" />
+    <circle cx="612" cy="762" r="2.2" />
+  </g>
+</svg>

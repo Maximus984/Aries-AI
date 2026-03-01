@@ -1,0 +1,56 @@
+{
+  "name": "aries-ai-assistant",
+  "displayName": "Aries AI Assistant",
+  "description": "Generate, explain, and fix code through your Aries backend.",
+  "version": "0.0.1",
+  "publisher": "maxxforgestudio",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": ["Programming Languages", "Other"],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onCommand:aries.generateCode",
+    "onCommand:aries.explainCode",
+    "onCommand:aries.fixCode"
+  ],
+  "contributes": {
+    "commands": [
+      { "command": "aries.generateCode", "title": "Aries: Generate Code" },
+      { "command": "aries.explainCode", "title": "Aries: Explain Code" },
+      { "command": "aries.fixCode", "title": "Aries: Fix Code" }
+    ],
+    "configuration": {
+      "title": "Aries AI",
+      "properties": {
+        "aries.apiBaseUrl": {
+          "type": "string",
+          "default": "http://localhost:4000",
+          "description": "Base URL for Aries developer API."
+        },
+        "aries.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Developer API key for Aries backend."
+        },
+        "aries.model": {
+          "type": "string",
+          "default": "gpt-4.1-mini",
+          "description": "Default model sent to backend."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "watch": "tsc -watch -p ."
+  },
+  "dependencies": {
+    "axios": "^1.7.9"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/vscode": "^1.96.0",
+    "typescript": "^5.7.2"
+  }
+}

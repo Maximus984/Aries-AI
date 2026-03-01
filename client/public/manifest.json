@@ -1,0 +1,19 @@
+{
+  "name": "Aries AI Command Suite",
+  "short_name": "Aries AI",
+  "description": "Aries AI workspace for chat, live voice, and coding collaboration.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050710",
+  "theme_color": "#0d1730",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/media/aries-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
